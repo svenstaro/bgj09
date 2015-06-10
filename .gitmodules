@@ -1,0 +1,3 @@
+[submodule "strapon"]
+	path = strapon
+	url = git@github.com:svenstaro/strapon.git
