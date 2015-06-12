@@ -11,14 +11,14 @@ all: bgj09
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(LIBS) -c -o $@ $<
 
-bgj09: $(patsubst %.cpp, %.o, $(FILES))
+bgj09.bin: $(patsubst %.cpp, %.o, $(FILES))
 	$(CXX) $(CXXFLAGS) $(LIBS) -o $@ $+
 
-run: bgj09
-	./bgj09
+run: bgj09.bin
+	./bgj09.bin
 
 web:
 	source /etc/profile.d/emscripten.sh; $(EMXX) $(CXXFLAGS) -o index.html $(patsubst %.cpp, %.o, $(FILES))
 
 clean:
-	rm -f *.o bgj09
+	rm -f *.o *.bin
