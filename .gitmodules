@@ -1,3 +1,6 @@
 [submodule "strapon"]
 	path = strapon
 	url = git@github.com:svenstaro/strapon.git
+[submodule "entityx"]
+	path = entityx
+	url = git@github.com:alecthomas/entityx.git
