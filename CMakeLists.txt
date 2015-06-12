@@ -11,6 +11,7 @@ else()
     include(FindPkgConfig)
     pkg_search_module(SDL2 REQUIRED sdl2)
     pkg_search_module(SDL2_IMAGE REQUIRED SDL2_image)
+    pkg_search_module(SDL2_MIXER REQUIRED SDL2_mixer)
 endif()
 
 file(GLOB sources src/*.cpp)
