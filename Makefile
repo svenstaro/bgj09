@@ -1,25 +1,16 @@
-.PHONY: clean web run
-CXX = g++
-CXXFLAGS = -g -Wall -Werror -Wextra -pedantic -std=c++14
-LIBS =  $(shell sdl2-config --libs) -lSDL2_mixer -lSDL2_image
-EMXX = em++
-EMXXFLAGS = -Oz -s USE_SDL=2
+.PHONY: web run
 
-FILES = $(wildcard src/*.cpp)
+default:
+	mkdir -p build
+	cd build; cmake ..; make -j
 
-all: bgj09.bin
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(LIBS) -c -o $@ $<
-
-bgj09.bin: $(patsubst %.cpp, %.o, $(FILES))
-	$(CXX) $(CXXFLAGS) $(shell sdl2-config --cflags) $(LIBS) -o $@ $+
-
-run: bgj09.bin
-	./bgj09.bin
+run:
+	build/bgj09
 
 web:
-	source /etc/profile.d/emscripten.sh; $(EMXX) $(CXXFLAGS) $(EMXXFLAGS) -o index.html $(wildcard src/*.cpp)
+	mkdir -p build-web
+	cd build-web; /usr/lib/emscripten/emcmake cmake ..; make -j
 
 clean:
-	rm -f *.o *.bin
+	rm -rf build
+	rm -rf build-web
