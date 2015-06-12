@@ -1,7 +1,7 @@
-.PHONY: clean web
+.PHONY: clean web run
 CXX = g++
-CXXFLAGS = -g -Wall -Werror -Wextra -pedantic -std=c++14
-LIBS = -lSDL2 -lSDL2_mixer -lSDL2_image
+CXXFLAGS = -g -Wall -Werror -Wextra -pedantic -std=c++14 $(shell sdl2-config --cflags)
+LIBS =  $(shell sdl2-config --libs) -lSDL2_mixer -lSDL2_image
 EMXX = em++
 
 FILES = $(wildcard src/*)
@@ -9,13 +9,16 @@ FILES = $(wildcard src/*)
 all: bgj09
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) $(LIBS) -c -o $@ $<
 
 bgj09: $(patsubst %.cpp, %.o, $(FILES))
-	$(CXX) $(CXXFLAGS) -o $@ $+
+	$(CXX) $(CXXFLAGS) $(LIBS) -o $@ $+
+
+run: bgj09
+	./bgj09
 
 web:
-	$(EMXX) $(CXXFLAGS) -o index.html $(patsubst %.cpp, %.o, $(FILES))
+	source /etc/profile.d/emscripten.sh; $(EMXX) $(CXXFLAGS) -o index.html $(patsubst %.cpp, %.o, $(FILES))
 
 clean:
-	rm -f *.o core.*
+	rm -f *.o bgj09
