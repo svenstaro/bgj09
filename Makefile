@@ -4,9 +4,9 @@ CXXFLAGS = -g -Wall -Werror -Wextra -pedantic -std=c++14 $(shell sdl2-config --c
 LIBS =  $(shell sdl2-config --libs) -lSDL2_mixer -lSDL2_image
 EMXX = em++
 
-FILES = $(wildcard src/*)
+FILES = $(wildcard src/*.cpp)
 
-all: bgj09
+all: bgj09.bin
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(LIBS) -c -o $@ $<
