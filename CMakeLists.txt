@@ -19,12 +19,13 @@ else()
     pkg_check_modules(SDL2 REQUIRED sdl2 SDL2_gfx SDL2_image SDL2_mixer SDL2_ttf)
 endif()
 
-include_directories(
-    ${SDL2_INCLUDE_DIRS}
-)
-
 set(ENTITYX_BUILD_TESTING false CACHE BOOL "")
 add_subdirectory(entityx)
+
+include_directories(
+    ${SDL2_INCLUDE_DIRS}
+    entityx/
+)
 
 target_link_libraries(bgj09
     ${SDL2_LIBRARIES}

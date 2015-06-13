@@ -10,6 +10,7 @@ build/
 *.js
 *.map
 *.mem
+*.pyc
 
 # Precompiled Headers
 *.gch

@@ -2,6 +2,8 @@
 #include <emscripten.h>
 #endif
 
+#include "entityx/entityx.h"
+
 #include <SDL2/SDL.h>
 
 #include <iostream>
@@ -14,6 +16,10 @@ auto rand_color = std::bind(distribution, random_engine);
 
 SDL_Window *win;
 SDL_Renderer *ren;
+
+entityx::EntityX ex;
+
+entityx::Entity entity = ex.entities.create();
 
 void mainloop() {
     SDL_SetRenderDrawColor(ren, rand_color(), rand_color(), rand_color(), 255);
