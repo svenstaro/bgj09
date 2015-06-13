@@ -40,7 +40,7 @@ public:
 				x++;
 			}
 			glm::vec2 direction(x,y);
-			direction = glm::normalize(direction);
+			direction = glm::normalize(direction) *(float) dt;
 			events.emit<PlayerInstructionEvent>(direction,entity);
 		}
 	}

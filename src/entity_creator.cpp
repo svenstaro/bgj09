@@ -1,12 +1,16 @@
 #include "entity_creator.hpp"
 #include "entityx/entityx.h"
 #include "component_controlable.hpp"
+#include "component_moveable.hpp"
+#include "component_drawable.hpp"
+#include "component_position.hpp"
 
 
-EntityCreator::EntityCreator(entityx::EntityManager *entity_manager) : m_entity_manager(entity_manager){}
-
-void EntityCreator::create_angler()
+void EntityCreator::create_angler(entityx::EntityManager &entity_manager)
 {
-	entityx::Entity entity = m_entity_manager->create();
+	entityx::Entity entity = entity_manager.create();
 	entity.assign<Controlable>();
+	entity.assign<Moveable>();
+	entity.assign<Position>();
+	entity.assign<Drawable>("Player",25,25);
 }

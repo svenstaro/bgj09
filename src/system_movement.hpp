@@ -30,8 +30,8 @@ public:
 	}
 	void receive(const PlayerInstructionEvent &player_instruction_event)
 	{
-		auto lol = player_instruction_event;
-		entityx::ComponentHandle<Moveable> moveable = lol.m_entity.component<Moveable>();
+		auto copy = player_instruction_event;
+		entityx::ComponentHandle<Moveable> moveable = copy.m_entity.component<Moveable>();
 		moveable->accelerate(player_instruction_event.m_direction_vector);
 	}
 };

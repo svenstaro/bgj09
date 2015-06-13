@@ -14,6 +14,9 @@ int MainState::init() {
 	m_systems.add<DrawSystem>(m_game);
     m_systems.add<ControlSystem>();
     m_systems.configure();
+
+    EntityCreator::create_angler(m_entities);
+
     return 0;
 }
 
@@ -36,4 +39,5 @@ void MainState::update(double dt) {
 
     m_systems.update<MovementSystem>(dt);
     m_systems.update<DrawSystem>(dt);
+    m_systems.update<ControlSystem>(dt);
 }

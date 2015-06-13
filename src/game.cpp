@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 #include "main_state.hpp"
+#include "entity_creator.hpp"
 
 Game::~Game() {
     SDL_DestroyRenderer(m_render);
@@ -29,6 +30,8 @@ int Game::init() {
         return 1;
     }
 
+    m_res_manager.load_surface("Player","res/character.png",m_render);
+
     entityx::Entity entity = m_ex.entities.create();
     entity.assign<Interactable>();
     entity.assign<Position>();
@@ -52,7 +55,7 @@ SDL_Renderer *Game::get_renderer()
     return m_render;
 }
 
-ResourceManager *Game::get_res_manager()
+ResourceManager Game::get_res_manager()
 {
     return m_res_manager;
 }

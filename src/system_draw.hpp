@@ -25,7 +25,7 @@ public:
 			dest.w = drawable->get_width();
 			dest.h = drawable->get_height();
 			SDL_RenderCopy(m_game->get_renderer(),
-						   m_game->get_res_manager()->get_texture(drawable->get_texture_key()),
+						   m_game->get_res_manager().get_texture(drawable->get_texture_key()),
 						   NULL,
 						   &dest);
     	}

@@ -3,6 +3,7 @@
 
 #include "component_interactable.hpp"
 #include "component_position.hpp"
+#include "entity_creator.hpp"
 
 #include "strapon/state/state.hpp"
 #include "strapon/resource_manager/resource_manager.hpp"
@@ -29,7 +30,7 @@ public:
     void shutdown();
 
     SDL_Renderer *get_renderer();
-	ResourceManager *get_res_manager();
+	ResourceManager get_res_manager();
 
 private:
     bool m_running = true;
@@ -39,7 +40,7 @@ private:
     SDL_Renderer *m_render;
     std::stack<std::pair<std::string, std::unique_ptr<State>>> m_states;
     entityx::EntityX m_ex;
-    ResourceManager *m_res_manager;
+    ResourceManager m_res_manager;
 };
 
 #endif /* end of include guard: GAME_HPP */

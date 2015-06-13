@@ -6,11 +6,7 @@
 class EntityCreator
 {
 public:
-	EntityCreator(entityx::EntityManager *entity_manager);
-	
-	void create_angler();
-private:
-	entityx::EntityManager *m_entity_manager;
+	static void create_angler(entityx::EntityManager &entity_manager);
 };
 
 #endif
