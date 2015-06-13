@@ -1,13 +1,16 @@
 #ifndef POSITION_HPP
 #define POSITION_HPP
-//#include TODO entityx includen
+
+#include "entityx/entityx.h"
+
 #include <glm/vec2.hpp>
-struct Position : entity::Component<Position>
+struct Position : entityx::Component<Position>
 {
-	glm::vec2<float> get_position();
-	void set_position(glm::vec2<float>);
+	Position(glm::vec2 new_position = glm::vec2(0.0f,0.0f)) : position(new_position){}
+	glm::vec2 get_position();
+	void set_position(glm::vec2);
 private:
-	glm::vec2<float>;
+	glm::vec2 position;
 };
 
 #endif
