@@ -1,4 +1,5 @@
 build/
+build-web/
 
 # Compiled Object files
 *.slo
