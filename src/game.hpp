@@ -3,6 +3,7 @@
 
 #include "component_interactable.hpp"
 #include "component_position.hpp"
+#include "strapon/resource_manager/resource_manager.hpp"
 
 #include "strapon/state/state.hpp"
 
@@ -23,6 +24,8 @@ public:
     int init();
     void mainloop();
     bool is_running();
+    SDL_Renderer *get_renderer();
+	ResourceManager *get_res_manager();
 
 private:
     bool m_running = true;
@@ -30,6 +33,7 @@ private:
     SDL_Renderer *m_render;
     std::stack<State> m_states;
     entityx::EntityX m_ex;
+    ResourceManager *m_res_manager;
 };
 
 #endif /* end of include guard: GAME_HPP */

@@ -1,26 +1,32 @@
 #include <glm/vec2.hpp>
 #include "component_drawable.hpp"
-#include "../strapon/resource_manager.hpp"
+#include "strapon/resource_manager/resource_manager.hpp"
+#include "game.hpp"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
-struct DrawSystem : public entityx::System<DrawSystem>
+class DrawSystem : public entityx::System<DrawSystem>
 {
-	DrawSystem(Game new_game) : game(new_game)
-	void update(entityx::EntityManager &es, entityx::EventManager &events, float dt) override
+public:
+	DrawSystem(Game *new_game) : m_game(new_game){}
+	void update(entityx::EntityManager &es, entityx::EventManager &events, entityx::TimeDelta dt) override
 	{
-		ComponentHandle<Draw> draw;
-		ComponentHandle<Position> position;
-		for (entityx::Entity entity : es.entities_with_components(draw, position))
+		entityx::ComponentHandle<Drawable> drawable;
+		entityx::ComponentHandle<Position> position;
+		for (entityx::Entity entity : es.entities_with_components(drawable, position))
 		{
-			renderTexture(resource_manager.get_texture(draw.get_texture_key()),
-						  ren,
-						  position.get_position()[0],
-						  position.get_position()[1],
-						  draw.get_width(),
-						  draw.get_heigth());
+			(void)entity;
+			SDL_Rect dest;
+			dest.x = position->get_position()[0];
+			dest.y = position->get_position()[1];
+			dest.w = drawable->get_width();
+			dest.h = drawable->get_height();
+			SDL_RenderCopy(m_game->get_renderer(),
+						   m_game->get_res_manager()->get_texture(drawable->get_texture_key()),
+						   NULL,
+						   &dest);
     	}
 	}
-
 private:
-	Game game;
-
-}
+	Game *m_game;
+};

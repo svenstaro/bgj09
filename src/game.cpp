@@ -40,6 +40,16 @@ void Game::mainloop() {
     SDL_RenderPresent(m_render);
 }
 
+SDL_Renderer *Game::get_renderer()
+{
+    return m_render;
+}
+
+ResourceManager *Game::get_res_manager()
+{
+    return m_res_manager;
+}
+
 bool Game::is_running() {
     return m_running;
 }
