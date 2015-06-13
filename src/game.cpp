@@ -34,10 +34,12 @@ int Game::init() {
     return 0;
 }
 
-bool Game::mainloop() {
+void Game::mainloop() {
     SDL_SetRenderDrawColor(m_render, 0, 100, 200, 255);
     SDL_RenderClear(m_render);
     SDL_RenderPresent(m_render);
+}
 
-    return true;
+bool Game::is_running() {
+    return m_running;
 }

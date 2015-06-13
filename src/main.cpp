@@ -6,6 +6,11 @@
 
 #include <functional>
 
+void mainloop(void* args) {
+    auto game = static_cast<Game*>(args);
+    game->mainloop();
+}
+
 int main() {
     Game game;
 
@@ -13,11 +18,11 @@ int main() {
         return 1;
 
 #ifdef __EMSCRIPTEN__
-    std::function<bool()> f = [&game](){ return game.mainloop(); };
-    //auto f = [&game](){ return game.mainloop(); };
-    emscripten_set_main_loop(f.target(), 0, true);
+    emscripten_set_main_loop_arg(mainloop, &game, 0, true);
 #else
-    while (game.mainloop()) {}
+    while (game.is_running()) {
+        mainloop(&game);
+    }
 #endif
 
     return 0;

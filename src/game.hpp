@@ -21,9 +21,11 @@ public:
     ~Game();
 
     int init();
-    bool mainloop();
+    void mainloop();
+    bool is_running();
 
 private:
+    bool m_running = true;
     SDL_Window *m_window;
     SDL_Renderer *m_render;
     std::stack<State> m_states;
