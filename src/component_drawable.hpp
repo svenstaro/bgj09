@@ -1,5 +1,5 @@
-#ifndef DRAW_HPP
-#define DRAW_HPP
+#ifndef COMPONENT_DRAWABLE_HPP
+#define COMPONENT_DRAWABLE_HPP
 
 #include "entityx/entityx.h"
 

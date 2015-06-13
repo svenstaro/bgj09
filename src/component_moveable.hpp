@@ -5,10 +5,16 @@
 #include <glm/vec2.hpp>
 struct Moveable : entityx::Component<Moveable>
 {
-	Moveable(glm::vec2 new_velo) : m_velocity(new_velo){}
+	Moveable(glm::vec2 new_velo, double new_acc) : m_velocity(new_velo), m_acceleration(new_acc){}
 	void set_velocity(glm::vec2 new_velo)
 	{
 		m_velocity = new_velo;
+	}
+
+	void accelerate(glm::vec2 new_velo)
+	{
+		new_velo *= m_acceleration;
+		m_velocity += new_velo;
 	}
 
 	glm::vec2 get_velocity()
@@ -16,13 +22,8 @@ struct Moveable : entityx::Component<Moveable>
 		return m_velocity;
 	}
 
-	float get_absolute_speed()
-	{
-		//return glm::lengthgit (m_velocity));
-		return 0.0f;
-	}
-
 private:
 	glm::vec2 m_velocity;
+	double m_acceleration;
 };
 #endif
