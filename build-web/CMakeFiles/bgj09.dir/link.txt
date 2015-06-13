@@ -1,1 +1,0 @@
-/usr/lib/emscripten/em++    -Oz -s USE_SDL=2 -o index.html  @CMakeFiles/bgj09.dir/objects1.rsp  -o bgj09.js @CMakeFiles/bgj09.dir/linklibs.rsp
