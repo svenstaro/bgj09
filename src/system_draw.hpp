@@ -14,12 +14,15 @@ class DrawSystem : public entityx::System<DrawSystem>
 public:
 	DrawSystem(Game *game) : m_game(game) {
         int w, h;
-        SDL_GetWindowSize(game->get_window(), &w, &h);
+        SDL_RenderGetLogicalSize(game->get_renderer(), &w, &h);
         m_camera = SDL_Rect{0, 0, w, h};
     }
 
 	void update(entityx::EntityManager &es, entityx::EventManager &events, entityx::TimeDelta dt) override
 	{
+        SDL_SetRenderDrawColor(m_game->get_renderer(), 0, 100, 200, 255);
+        SDL_RenderClear(m_game->get_renderer());
+
 		entityx::ComponentHandle<Drawable> drawable;
 		entityx::ComponentHandle<Position> position;
 		for (entityx::Entity entity : es.entities_with_components(drawable, position))
@@ -35,6 +38,11 @@ public:
 						   NULL,
 						   &dest);
     	}
+
+        SDL_SetRenderDrawColor(m_game->get_renderer(), 255, 100, 200, 255);
+        SDL_Rect rect{0, 0, 400, 400};
+        SDL_RenderFillRect(m_game->get_renderer(), &rect);
+        SDL_RenderPresent(m_game->get_renderer());
 	}
 
 private:

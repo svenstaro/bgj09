@@ -14,7 +14,10 @@ int Game::init() {
         return 1;
     }
 
-    m_window = SDL_CreateWindow("Hello World!", 100, 100, 1200, 800, SDL_WINDOW_SHOWN);
+    int width = 1200;
+    int height = 800;
+
+    m_window = SDL_CreateWindow("Hello World!", 100, 100, width, height, SDL_WINDOW_SHOWN);
     if (m_window == nullptr) {
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -28,6 +31,8 @@ int Game::init() {
         SDL_Quit();
         return 1;
     }
+
+    SDL_RenderSetLogicalSize(m_render, width, height);
 
     entityx::Entity entity = m_ex.entities.create();
     entity.assign<Interactable>();
