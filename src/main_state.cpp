@@ -12,6 +12,7 @@ int MainState::init() {
 	m_systems.add<MovementSystem>();
 	m_systems.add<DrawSystem>(m_game);
     m_systems.configure();
+
     return 0;
 }
 

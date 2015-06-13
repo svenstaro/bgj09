@@ -29,14 +29,15 @@ public:
     void shutdown();
 
     SDL_Renderer *get_renderer();
+    SDL_Window *get_window();
 	ResourceManager *get_res_manager();
 
 private:
     bool m_running = true;
     int m_last_frame_time = 0;
 
-    SDL_Window *m_window;
     SDL_Renderer *m_render;
+    SDL_Window *m_window;
     std::stack<std::pair<std::string, std::unique_ptr<State>>> m_states;
     entityx::EntityX m_ex;
     ResourceManager *m_res_manager;

@@ -14,7 +14,7 @@ int Game::init() {
         return 1;
     }
 
-    m_window = SDL_CreateWindow("Hello World!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+    m_window = SDL_CreateWindow("Hello World!", 100, 100, 1200, 800, SDL_WINDOW_SHOWN);
     if (m_window == nullptr) {
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -50,6 +50,11 @@ void Game::mainloop() {
 SDL_Renderer *Game::get_renderer()
 {
     return m_render;
+}
+
+SDL_Window *Game::get_window()
+{
+    return m_window;
 }
 
 ResourceManager *Game::get_res_manager()

@@ -1,17 +1,23 @@
 #include "game.hpp"
 #include "component_drawable.hpp"
 #include "component_position.hpp"
-#include "strapon/resource_manager/resource_manager.hpp"
 
+#include "strapon/resource_manager/resource_manager.hpp"
 
 #include "entityx/entityx.h"
 #include <glm/vec2.hpp>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+
 class DrawSystem : public entityx::System<DrawSystem>
 {
 public:
-	DrawSystem(Game *new_game) : m_game(new_game){}
+	DrawSystem(Game *game) : m_game(game) {
+        int w, h;
+        SDL_GetWindowSize(game->get_window(), &w, &h);
+        m_camera = SDL_Rect{0, 0, w, h};
+    }
+
 	void update(entityx::EntityManager &es, entityx::EventManager &events, entityx::TimeDelta dt) override
 	{
 		entityx::ComponentHandle<Drawable> drawable;
@@ -30,6 +36,8 @@ public:
 						   &dest);
     	}
 	}
+
 private:
 	Game *m_game;
+    SDL_Rect m_camera;
 };
