@@ -13,8 +13,10 @@
 
 #include <iostream>
 #include <random>
+#include <memory>
 #include <functional>
 #include <stack>
+#include <string>
 
 class Game {
 public:
@@ -26,9 +28,11 @@ public:
 
 private:
     bool m_running = true;
+    int m_last_frame_time = 0;
+
     SDL_Window *m_window;
     SDL_Renderer *m_render;
-    std::stack<State> m_states;
+    std::stack<std::pair<std::string, std::unique_ptr<State>>> m_states;
     entityx::EntityX m_ex;
 };
 
