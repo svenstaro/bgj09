@@ -3,6 +3,8 @@
 #endif
 
 #include "entityx/entityx.h"
+#include "component_interactable.hpp"
+#include "component_position.hpp"
 
 #include <glm/vec2.hpp>
 #include <SDL2/SDL.h>
@@ -21,6 +23,7 @@ SDL_Renderer *ren;
 entityx::EntityX ex;
 
 entityx::Entity entity = ex.entities.create();
+
 
 void mainloop() {
     SDL_SetRenderDrawColor(ren, rand_color(), rand_color(), rand_color(), 255);
@@ -50,6 +53,8 @@ int main()
         SDL_Quit();
         return 1;
     }
+    entity.assign<Interactable>();
+    entity.assign<Position>();
 
 #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop(mainloop, 0, true);
