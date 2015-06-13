@@ -1,4 +1,4 @@
-.PHONY: web run
+.PHONY: web run default clean
 
 default:
 	mkdir -p build
