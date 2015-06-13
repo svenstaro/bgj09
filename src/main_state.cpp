@@ -1,6 +1,7 @@
 #include "main_state.hpp"
 #include "system_movement.hpp"
 #include "system_draw.hpp"
+#include "system_controls.hpp"
 #include "entityx/entityx.h"
 #include <SDL2/SDL.h>
 
@@ -11,6 +12,7 @@ MainState::~MainState(){}
 int MainState::init() {
 	m_systems.add<MovementSystem>();
 	m_systems.add<DrawSystem>(m_game);
+    m_systems.add<ControlSystem>();
     m_systems.configure();
 
     return 0;
