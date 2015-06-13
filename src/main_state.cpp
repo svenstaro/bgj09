@@ -4,12 +4,14 @@
 
 MainState::MainState(Game *game) : m_game(game) {}
 
+MainState::~MainState(){}
+
 int MainState::init() {
     return 0;
 }
 
 void MainState::update(float dt) {
-    SDL_SetRenderDrawColor(game->get_renderer(), 0, 100, 200, 255);
-    SDL_RenderClear(game->get_renderer());
-    SDL_RenderPresent(game->get_renderer());
+    SDL_SetRenderDrawColor(m_game->get_renderer(), 0, 100, 200, 255);
+    SDL_RenderClear(m_game->get_renderer());
+    SDL_RenderPresent(m_game->get_renderer());
 }

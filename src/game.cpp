@@ -33,7 +33,7 @@ int Game::init() {
     entity.assign<Interactable>();
     entity.assign<Position>();
 
-    m_states.push({"main", std::make_unique<MainState>()});
+    m_states.push({"main", std::make_unique<MainState>(this)});
     m_states.top().second->init();
 
     return 0;

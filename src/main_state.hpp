@@ -8,7 +8,8 @@
 class MainState : public State
 {
 public:
-    MainState(Game *game)
+    MainState(Game *game);
+    ~MainState();
     int init();
     void update(float dt);
 
