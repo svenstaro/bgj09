@@ -4,6 +4,11 @@ default:
 	mkdir -p build
 	cd build; cmake ..; make -j
 
+clang:
+	mkdir -p build
+	cd build; CXX=clang++ cmake ..; make -j
+
+
 run:
 	build/bgj09
 
@@ -14,3 +19,4 @@ web:
 clean:
 	rm -rf build
 	rm -rf build-web
+
