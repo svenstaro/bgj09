@@ -24,6 +24,8 @@ add_subdirectory(entityx)
 
 include_directories(
     ${SDL2_INCLUDE_DIRS}
+    glm/
+    strapon/
     entityx/
 )
 

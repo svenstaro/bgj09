@@ -1,3 +1,0 @@
-/home/svenstaro/prj/bgj09/build-web/entityx/CMakeFiles/entityx_shared.dir
-/home/svenstaro/prj/bgj09/build-web/entityx/CMakeFiles/entityx.dir
-/home/svenstaro/prj/bgj09/build-web/CMakeFiles/bgj09.dir

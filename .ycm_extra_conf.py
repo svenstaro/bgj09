@@ -24,6 +24,7 @@ flags = [
 '-x',
 'c++',
 '-Ientityx',
+'-Istrapon',
 '-I',
 '.',
 ]
