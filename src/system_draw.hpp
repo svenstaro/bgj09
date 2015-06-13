@@ -1,10 +1,13 @@
-#include <glm/vec2.hpp>
-#include "component_drawable.hpp"
-#include "strapon/resource_manager/resource_manager.hpp"
 #include "game.hpp"
+#include "component_drawable.hpp"
+#include "component_position.hpp"
+#include "strapon/resource_manager/resource_manager.hpp"
+
+
+#include "entityx/entityx.h"
+#include <glm/vec2.hpp>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-
 class DrawSystem : public entityx::System<DrawSystem>
 {
 public:

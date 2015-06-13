@@ -41,7 +41,7 @@ int Game::init() {
 
 void Game::mainloop() {
     int current_time = SDL_GetTicks();
-    float dt = (current_time - m_last_frame_time) / 1000.f;
+    double dt = (current_time - m_last_frame_time) / 1000.0;
     m_last_frame_time = current_time;
 
     m_states.top().second->update(dt);
