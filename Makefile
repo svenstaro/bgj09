@@ -1,4 +1,4 @@
-.PHONY: web run default clean
+.PHONY: web run default clean clang webrun
 
 default:
 	mkdir -p build
