@@ -1,15 +1,15 @@
-#include <glm/vec2>
-#include "component_draw.hpp"
-#include "strapon/resource_manager.hpp"
+#include <glm/vec2.hpp>
+#include "component_drawable.hpp"
+#include "../strapon/resource_manager.hpp"
 
-struct DrawSystem : public System<DrawSystem>
+struct DrawSystem : public entityx::System<DrawSystem>
 {
-	DrawSystem(ResourceManager *new_res_man, SDL_Renderer *new_ren) : resource_manager(new_res_man), ren(new_ren)
-	void update(entityx::EntityManager &es, entityx::EventManager &events, TimeDelta dt) override
+	DrawSystem(Game new_game) : game(new_game)
+	void update(entityx::EntityManager &es, entityx::EventManager &events, float dt) override
 	{
 		ComponentHandle<Draw> draw;
 		ComponentHandle<Position> position;
-		for (Entity entity : es.entities_with_components(draw))
+		for (entityx::Entity entity : es.entities_with_components(draw, position))
 		{
 			renderTexture(resource_manager.get_texture(draw.get_texture_key()),
 						  ren,
@@ -21,7 +21,6 @@ struct DrawSystem : public System<DrawSystem>
 	}
 
 private:
-	ResourceManager *resource_manager;
-	SDL_Renderer *ren;
+	Game game;
 
 }

@@ -5,6 +5,7 @@
 #include "entityx/entityx.h"
 #include "component_interactable.hpp"
 #include "component_position.hpp"
+#include "component_moveable.hpp"
 
 #include <glm/vec2.hpp>
 #include <SDL2/SDL.h>
@@ -55,6 +56,8 @@ int main()
     }
     entity.assign<Interactable>();
     entity.assign<Position>();
+    entity.assign<Movable>();
+    //entity.assign<Drawable>();
 
 #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop(mainloop, 0, true);
