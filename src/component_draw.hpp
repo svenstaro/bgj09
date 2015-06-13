@@ -1,7 +1,7 @@
 #ifndef DRAW_HPP
 #define DRAW_HPP
 
-//#include TODO: ENTITYX
+#include "entityx/entityx.h"
 
 #include <SDL2/SDL.h>
 
