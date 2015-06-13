@@ -60,3 +60,7 @@ ResourceManager *Game::get_res_manager()
 bool Game::is_running() {
     return m_running;
 }
+
+void Game::shutdown() {
+    m_running = false;
+}
