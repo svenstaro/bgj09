@@ -3,9 +3,9 @@
 
 #include "component_interactable.hpp"
 #include "component_position.hpp"
-#include "strapon/resource_manager/resource_manager.hpp"
 
 #include "strapon/state/state.hpp"
+#include "strapon/resource_manager/resource_manager.hpp"
 
 #include "entityx/entityx.h"
 
@@ -26,6 +26,8 @@ public:
     int init();
     void mainloop();
     bool is_running();
+    void shutdown();
+
     SDL_Renderer *get_renderer();
 	ResourceManager *get_res_manager();
 

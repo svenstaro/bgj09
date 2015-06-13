@@ -14,7 +14,7 @@ void mainloop(void* args) {
 int main() {
     Game game;
 
-    if (!game.init())
+    if (game.init() != 0)
         return 1;
 
 #ifdef __EMSCRIPTEN__
