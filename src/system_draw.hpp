@@ -118,7 +118,7 @@ public:
                                &dest,0,NULL,flip);
         }
         SDL_SetRenderTarget(m_game->get_renderer(), m_lighttex);
-        SDL_SetRenderDrawColor(m_game->get_renderer(), 200, 200, 200, 255);
+        SDL_SetRenderDrawColor(m_game->get_renderer(), 50, 50, 50, 255);
         SDL_RenderClear(m_game->get_renderer());
         SDL_SetTextureBlendMode(m_game->get_res_manager().get_texture("gradient"), SDL_BLENDMODE_ADD);
         

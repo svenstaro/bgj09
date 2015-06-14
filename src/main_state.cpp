@@ -45,6 +45,12 @@ void MainState::update(double dt) {
 
     int score = m_game->get_score() + (int)(dt * 1000);
     m_game->set_score(score);
+
+    if (score > enemies * 5000) {
+            EntityCreator::create_enemy(m_entities);
+            ++enemies;
+    }
+
     m_systems.update<MovementSystem>(dt);
     m_systems.update<DrawSystem>(dt);
     m_systems.update<ControlSystem>(dt);

@@ -20,7 +20,7 @@ private:
   	entityx::SystemManager m_systems{m_entities, m_events};
   	//Level1
   	std::string background_key;
-
+  	int enemies = 1;
 };
 
 #endif /* end of include guard: STATE_MAIN_HPP */
