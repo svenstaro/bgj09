@@ -117,8 +117,8 @@ public:
 
         int x, y;
         SDL_GetMouseState(&x, &y);
-        m_camera.x = x;
-        m_camera.y = y;
+        m_camera.x = x - m_camera.w/2;
+        m_camera.y = y - m_camera.h/2;
 
         if (m_camera.x < 0)
             m_camera.x = 0;
