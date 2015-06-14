@@ -32,10 +32,12 @@ public:
     SDL_Renderer *get_renderer();
 	ResourceManager &get_res_manager();
     SDL_Window *get_window();
+    const SDL_Rect &get_worldsize() const;
 
 private:
     bool m_running = true;
     int m_last_frame_time = 0;
+    SDL_Rect m_worldsize = {0, 0, 2000, 1000};
 
     SDL_Renderer *m_render;
     SDL_Window *m_window;

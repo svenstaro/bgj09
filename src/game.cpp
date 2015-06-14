@@ -77,3 +77,7 @@ bool Game::is_running() {
 void Game::shutdown() {
     m_running = false;
 }
+
+const SDL_Rect &Game::get_worldsize() const {
+    return m_worldsize;
+}
