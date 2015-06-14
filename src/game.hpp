@@ -37,13 +37,15 @@ public:
 private:
     bool m_running = true;
     int m_last_frame_time = 0;
-    SDL_Rect m_worldsize = {0, 0, 2000, 1000};
+    SDL_Rect m_worldsize = {0, 0, 1600 , 1200};
 
     SDL_Renderer *m_render;
     SDL_Window *m_window;
     std::stack<std::pair<std::string, std::unique_ptr<State>>> m_states;
     entityx::EntityX m_ex;
     ResourceManager m_res_manager;
+
+
 };
 
 #endif /* end of include guard: GAME_HPP */

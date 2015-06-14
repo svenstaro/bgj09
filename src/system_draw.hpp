@@ -53,11 +53,14 @@ public:
                            &dest);
         }
 
-        for (entityx::Entity player : es.entities_with_components(controlable, position)) { 
-            (void)player;
-            //SDL_GetMouseState(&x, &y);
-            m_camera.x = position->get_position()[0] - m_camera.w/2;
-            m_camera.y = position->get_position()[1] - m_camera.h/2;
+        SDL_SetRenderDrawColor(m_game->get_renderer(), 255, 100, 200, 255);
+
+        for (entityx::Entity player : es.entities_with_components(controlable, position))
+ 		{ 
+ 			(void)player;
+	        //SDL_GetMouseState(&x, &y);
+	        m_camera.x = position->get_position()[0] - m_camera.w/2;
+	        m_camera.y = position->get_position()[1] - m_camera.h/2;
 
             if (m_camera.x < 0)
                 m_camera.x = 0;
@@ -77,6 +80,7 @@ public:
         SDL_RenderPresent(m_game->get_renderer());
     }
 
+>>>>>>> 497d319db7cdfdfce4545c3440855298c69dec7c
 private:
     Game *m_game;
     SDL_Rect m_camera;

@@ -44,7 +44,6 @@ public:
 			{
 				x+=1.0f;
 				std::cout << "X+" << std::endl;
-
 			}
 			if(x != 0.0f || y != 0.0f)
 			{
