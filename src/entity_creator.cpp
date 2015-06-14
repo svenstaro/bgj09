@@ -29,8 +29,8 @@ void EntityCreator::create_angler(entityx::EntityManager &entity_manager) {
 void EntityCreator::create_enemy(entityx::EntityManager &entity_manager) {
 	entityx::Entity enemy = entity_manager.create();
 	enemy.assign<Enemy>();
-	enemy.assign<Moveable>(glm::vec2(0.0,0.0),0.1);
-	enemy.assign<Position>();
+	enemy.assign<Moveable>(glm::vec2{0.0,0.0},0.1);
+	enemy.assign<Position>(glm::vec2{100.f, 100.f}, 50, 50);
 	enemy.assign<Drawable>("Player",50,50);
 }
 

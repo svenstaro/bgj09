@@ -25,9 +25,8 @@ public:
 		entityx::ComponentHandle<Controlable> player_controlable;
 		for(entityx::Entity enemy : es.entities_with_components(enemy_position, enemy_moveable, enemy_enemy)) {
             for(entityx::Entity player : es.entities_with_components(player_position, player_moveable, player_controlable)) {
-                glm::vec2 direction = glm::normalize(enemy_position->get_position() - player_position->get_position());
+                glm::vec2 direction = glm::normalize(player_position->get_position() - enemy_position->get_position());
                 enemy_moveable->accelerate(direction);
-                std::cout << "was" << std::endl;
                 (void)enemy;
                 (void)player;
             }
