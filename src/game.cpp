@@ -4,6 +4,7 @@
 #include "entity_creator.hpp"
 
 Game::~Game() {
+    m_res_manager.shutdown();
     SDL_CloseAudio();
     SDL_DestroyRenderer(m_render);
     SDL_DestroyWindow(m_window);
