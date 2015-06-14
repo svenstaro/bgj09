@@ -19,7 +19,6 @@ public:
                 if (first_entity != second_entity &&
                         SDL_HasIntersection(&first_position->get_rect(), &second_position->get_rect())) {
                     events.emit<CollisionEvent>(first_entity, second_entity);
-                    std::cout << "lol" << std::endl;
                 }
             }
         }
