@@ -2,6 +2,7 @@
 #include "component_drawable.hpp"
 #include "component_position.hpp"
 #include "component_controlable.hpp"
+#include "component_moveable.hpp"
 
 #include "strapon/resource_manager/resource_manager.hpp"
 
@@ -42,7 +43,7 @@ public:
             (void)entity;
             
             SDL_Rect dest;
-            SDL_RendererFlip flip;
+            SDL_RendererFlip flip = SDL_FLIP_NONE;
             entityx::ComponentHandle<Moveable> moveable = entity.component<Moveable>();
 
             dest.x = position->get_position()[0];
@@ -56,7 +57,7 @@ public:
 
 	        if(moveable)
 	        {
-	        	if(moveable->get_velocity().x < 0)
+	        	if(moveable && moveable->get_velocity().x < 0)
 	        	{
 	        		flip = SDL_FLIP_NONE;
 	        	}
@@ -96,7 +97,7 @@ public:
 
         // Render light map
         SDL_SetRenderTarget(m_game->get_renderer(), m_lighttex);
-        SDL_SetRenderDrawColor(m_game->get_renderer(), 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(m_game->get_renderer(), 100, 100, 100, 255);
         SDL_RenderClear(m_game->get_renderer());
         SDL_SetTextureBlendMode(m_game->get_res_manager().get_texture("gradient"), SDL_BLENDMODE_ADD);
         SDL_Rect lol{50, 50, 100, 100};
