@@ -4,6 +4,8 @@
 #include "entity_creator.hpp"
 
 Game::~Game() {
+    m_res_manager.shutdown();
+    SDL_CloseAudio();
     SDL_DestroyRenderer(m_render);
     SDL_DestroyWindow(m_window);
     Mix_Quit();
@@ -12,7 +14,7 @@ Game::~Game() {
 }
 
 int Game::init() {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return 1;
     }
@@ -35,9 +37,17 @@ int Game::init() {
         return 1;
     }
 
-    m_res_manager.load_surface("Player","res/character.png", m_render);
-    m_res_manager.load_surface("level_1_bg","res/underwater_mountains.png", m_render);
-    m_res_manager.load_surface("gradient","res/gradient.png", m_render);
+    if (Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) != 0) {
+        std::cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
+        return 1;
+    }
+
+    m_res_manager.load_texture("Player","res/character.png", m_render);
+    m_res_manager.load_texture("level_1_bg","res/underwater_mountains.png", m_render);
+    m_res_manager.load_texture("gradient","res/gradient.png", m_render);
+    m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
+    m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
+    m_res_manager.load_music("music1","res/ova.ogg");
 
     SDL_RenderSetLogicalSize(m_render, width, height);
 

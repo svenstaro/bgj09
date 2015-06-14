@@ -3,7 +3,7 @@
 #include "component_position.hpp"
 #include "component_controlable.hpp"
 #include "component_light.hpp"
-
+#include "component_moveable.hpp"
 #include "strapon/resource_manager/resource_manager.hpp"
 
 #include "entityx/entityx.h"
@@ -118,7 +118,7 @@ public:
 	                           &dest,0,NULL,flip);
     	}
         SDL_SetRenderTarget(m_game->get_renderer(), m_lighttex);
-        SDL_SetRenderDrawColor(m_game->get_renderer(), 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(m_game->get_renderer(), 100, 100, 100, 255);
         SDL_RenderClear(m_game->get_renderer());
         SDL_SetTextureBlendMode(m_game->get_res_manager().get_texture("gradient"), SDL_BLENDMODE_ADD);
         
