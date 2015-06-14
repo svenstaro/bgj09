@@ -22,7 +22,7 @@ public:
         m_lighttex = SDL_CreateTexture(game->get_renderer(), SDL_PIXELTYPE_UNKNOWN, SDL_TEXTUREACCESS_TARGET, game->get_worldsize().w, game->get_worldsize().h);
     }
 
-    void configure(entityx::EventManager &event_manager)
+    void configure(entityx::EventManager &event_manager) override
     {
 		event_manager.subscribe<PlayerInstructionLight>(*this);
 	}
