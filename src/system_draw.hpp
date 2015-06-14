@@ -32,11 +32,15 @@ public:
         entityx::ComponentHandle<Drawable> drawable;
         entityx::ComponentHandle<Position> position;
         entityx::ComponentHandle<Controlable> controlable;
+        
+
         for (entityx::Entity entity : es.entities_with_components(drawable, position))
         {
             (void)entity;
             
             SDL_Rect dest;
+            SDL_RendererFlip flip;
+            entityx::ComponentHandle<Moveable> moveable = entity.component<Moveable>();
 
             dest.x = position->get_position()[0];
             dest.y = position->get_position()[1];
@@ -47,11 +51,24 @@ public:
             // std::cout << drawable->get_width() << std::endl;
             // std::cout << drawable->get_height() << std::endl;
 
-            SDL_RenderCopy(m_game->get_renderer(),
-                           m_game->get_res_manager().get_texture(drawable->get_texture_key()),
-                           NULL,
-                           &dest);
-        }
+
+	        if(moveable)
+	        {
+	        	if(moveable->get_velocity().x < 0)
+	        	{
+	        		flip = SDL_FLIP_NONE;
+	        	}
+	        	else
+     	   		{
+     	   			flip = SDL_FLIP_HORIZONTAL;
+     	    	}
+	        }
+     	    
+     	    SDL_RenderCopyEx(m_game->get_renderer(),
+	                           m_game->get_res_manager().get_texture(drawable->get_texture_key()),
+	                           NULL,
+	                           &dest,0,NULL,flip);
+    	}
 
         SDL_SetRenderDrawColor(m_game->get_renderer(), 255, 100, 200, 255);
 
