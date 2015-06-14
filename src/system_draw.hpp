@@ -27,6 +27,7 @@ public:
     }
 
     void update(entityx::EntityManager &es, entityx::EventManager &events, entityx::TimeDelta dt) override {
+        // Change to render into rendertexture for now
         SDL_SetRenderTarget(m_game->get_renderer(), m_drawtex);
         SDL_SetRenderDrawColor(m_game->get_renderer(), 0, 100, 200, 255);
         SDL_RenderClear(m_game->get_renderer());
@@ -74,11 +75,22 @@ public:
 
             //std::cout << m_camera.x << " " << m_camera.y << std::endl;
         }
-        SDL_SetRenderTarget(m_game->get_renderer(), nullptr);
-        SDL_RenderCopy(m_game->get_renderer(), m_drawtex, &m_camera, nullptr);
 
         // Render light map
+        SDL_SetRenderTarget(m_game->get_renderer(), m_lighttex);
+        SDL_SetRenderDrawColor(m_game->get_renderer(), 0, 0, 0, 255);
+        SDL_RenderClear(m_game->get_renderer());
+        SDL_SetTextureBlendMode(m_game->get_res_manager().get_texture("gradient"), SDL_BLENDMODE_ADD);
+        SDL_Rect lol{50, 50, 100, 100};
+        SDL_RenderCopy(m_game->get_renderer(), m_game->get_res_manager().get_texture("gradient"),
+                       nullptr, &lol);
+        SDL_SetTextureBlendMode(m_lighttex, SDL_BLENDMODE_MOD);
+        SDL_SetRenderTarget(m_game->get_renderer(), m_drawtex);
+        SDL_RenderCopy(m_game->get_renderer(), m_lighttex, nullptr, nullptr);
+
+        // Render to final window
         SDL_SetRenderTarget(m_game->get_renderer(), nullptr);
+        SDL_RenderCopy(m_game->get_renderer(), m_drawtex, &m_camera, nullptr);
 
         SDL_RenderPresent(m_game->get_renderer());
     }
