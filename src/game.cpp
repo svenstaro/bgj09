@@ -6,6 +6,8 @@
 Game::~Game() {
     SDL_DestroyRenderer(m_render);
     SDL_DestroyWindow(m_window);
+    Mix_Quit();
+    IMG_Quit();
     SDL_Quit();
 }
 
@@ -55,19 +57,15 @@ void Game::mainloop() {
     m_states.top().second->update(dt);
 }
 
-SDL_Renderer *Game::get_renderer()
-{
+SDL_Renderer *Game::get_renderer() {
     return m_render;
 }
 
-
-SDL_Window *Game::get_window()
-{
+SDL_Window *Game::get_window() {
     return m_window;
 }
 
-ResourceManager &Game::get_res_manager()
-{
+ResourceManager &Game::get_res_manager() {
     return m_res_manager;
 }
 
