@@ -1,10 +1,10 @@
 #ifndef COMPONENT_LIGHT_HPP
 #define COMPONENT_LIGHT_HPP
 
-struct Light : entityx::Component<Interactable>
+struct Light : entityx::Component<Light>
 {
 	Light(double radius) : m_radius(radius){}
-	
+
 	double get_radius()
 	{
 		return m_radius;

@@ -54,8 +54,8 @@ public:
     	}
 
         SDL_SetRenderDrawColor(m_game->get_renderer(), 255, 100, 200, 255);
-        SDL_Rect rect{0, 0, 400, 400};
-        SDL_RenderFillRect(m_game->get_renderer(), &rect);
+     	//SDL_Rect rect{0, 0, 400, 400};
+       	//SDL_RenderFillRect(m_game->get_renderer(), &rect);
         for (entityx::Entity player : es.entities_with_components(controlable, position))
  		{ 
  			(void)player;
@@ -80,7 +80,6 @@ public:
         SDL_RenderCopy(m_game->get_renderer(), m_drawtex, &m_camera, nullptr);
         SDL_RenderPresent(m_game->get_renderer());
 	}
-
 private:
 	Game *m_game;
     SDL_Rect m_camera;

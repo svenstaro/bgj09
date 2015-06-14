@@ -4,6 +4,7 @@
 #include "component_moveable.hpp"
 #include "component_drawable.hpp"
 #include "component_position.hpp"
+#include "component_light.hpp"
 #include <glm/vec2.hpp>
 
 
@@ -14,7 +15,7 @@ void EntityCreator::create_angler(entityx::EntityManager &entity_manager)
 	fish.assign<Moveable>(glm::vec2(0.0,0.0),0.1);
 	fish.assign<Position>();
 	fish.assign<Drawable>("Player",50,50);
-	fiss.assign<Light>(10);
+	fish.assign<Light>(10);
 }
 
 void EntityCreator::create_level_1(entityx::EntityManager &entity_manager)
