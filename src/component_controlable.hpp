@@ -6,5 +6,7 @@
 
 
 struct Controlable : entityx::Component<Controlable>
-{};
+{
+	
+};
 #endif
