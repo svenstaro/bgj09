@@ -46,6 +46,7 @@ int Game::init() {
     m_res_manager.load_texture("gradient","res/gradient.png", m_render);
     m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
     m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
+    m_res_manager.load_music("music1","res/ova.ogg");
 
     SDL_RenderSetLogicalSize(m_render, width, height);
 

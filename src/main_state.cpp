@@ -11,7 +11,7 @@
 
 MainState::MainState(Game *game) : m_game(game) {}
 
-MainState::~MainState(){}
+MainState::~MainState() {}
 
 int MainState::init() {
     m_systems.add<MovementSystem>(m_game);
@@ -24,6 +24,8 @@ int MainState::init() {
     EntityCreator::create_level_1(m_entities);
     EntityCreator::create_angler(m_entities);
     EntityCreator::create_enemy(m_entities);
+
+    Mix_PlayMusic(m_game->get_res_manager().get_music("music1"), -1);
 
     return 0;
 }
