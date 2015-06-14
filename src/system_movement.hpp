@@ -39,7 +39,7 @@ public:
 
             if (position->get_position().x > m_game->get_worldsize().w - position->get_rect().w) {
                 moveable->set_velocity({0, moveable->get_velocity().y});
-                position->set_position({0, m_game->get_worldsize().w - position->get_rect().w});
+                position->set_position({m_game->get_worldsize().w - position->get_rect().w,position->get_position().y });
             }
 
             if (position->get_position().y < 0) {
@@ -49,7 +49,7 @@ public:
             
             if (position->get_position().y > m_game->get_worldsize().h - position->get_rect().h) {
                 moveable->set_velocity({moveable->get_velocity().x, 0});
-                position->set_position({m_game->get_worldsize().h - position->get_rect().h, 0});
+                position->set_position({position->get_position().x, m_game->get_worldsize().h - position->get_rect().h});
             }
         }
     }
