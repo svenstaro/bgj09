@@ -30,6 +30,8 @@ public:
     void shutdown();
     void gameover();
     void popstate();
+    int get_score();
+    void set_score(int score);
     const std::string &statename() const;
 
     SDL_Renderer *get_renderer();
@@ -47,6 +49,7 @@ private:
     std::stack<std::pair<std::string, std::unique_ptr<State>>> m_states;
     entityx::EntityX m_ex;
     ResourceManager m_res_manager;
+    int m_score = 0;
 };
 
 #endif /* end of include guard: GAME_HPP */

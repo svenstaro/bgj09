@@ -100,6 +100,15 @@ void Game::gameover() {
     m_states.push({"gameover", std::make_unique<GameoverState>(this)});
 }
 
+int Game::get_score()
+{
+    return m_score;
+}
+
+void Game::set_score(int score)
+{
+    m_score = score;
+}
 void Game::popstate() {
     m_states.pop();
 }

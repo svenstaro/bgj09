@@ -18,7 +18,6 @@ private:
     entityx::EventManager m_events;
   	entityx::EntityManager m_entities{m_events};
   	entityx::SystemManager m_systems{m_entities, m_events};
-
   	//Level1
   	std::string background_key;
 

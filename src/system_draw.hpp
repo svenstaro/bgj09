@@ -132,6 +132,15 @@ public:
         SDL_SetRenderTarget(m_game->get_renderer(), nullptr);
         SDL_RenderCopy(m_game->get_renderer(), m_drawtex, &m_camera, nullptr);
 
+        auto score = std::to_string(m_game->get_score());
+	    SDL_Color color{200, 100, 0, 200};
+	    SDL_Rect font_rect{50,50,200,50};
+	    SDL_Surface *font_surf = TTF_RenderText_Blended(m_game->get_res_manager().get_font("font20"), score.c_str(), color);
+	    SDL_Texture *font_tex = SDL_CreateTextureFromSurface(m_game->get_renderer(), font_surf);
+	    SDL_RenderCopy(m_game->get_renderer(), font_tex, nullptr, &font_rect);
+	    SDL_FreeSurface(font_surf);
+	    SDL_DestroyTexture(font_tex);
+
         SDL_RenderPresent(m_game->get_renderer());
     }
     void receive(const PlayerInstructionLight &player_instruction_light)
