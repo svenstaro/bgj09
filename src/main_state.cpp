@@ -17,7 +17,7 @@ int MainState::init() {
     m_systems.add<MovementSystem>(m_game);
     m_systems.add<DrawSystem>(m_game);
     m_systems.add<ControlSystem>();
-    m_systems.add<CollisionSystem>();
+    m_systems.add<CollisionSystem>(m_game);
     m_systems.add<EnemySystem>();
     m_systems.configure();
 

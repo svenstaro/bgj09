@@ -19,5 +19,13 @@ void GameoverState::update(double dt) {
                 m_game->popstate();
             }
         }
+        if (e.type == SDL_QUIT) {
+            m_game->shutdown();
+        }
+        if (e.type == SDL_KEYDOWN) {
+            if(e.key.keysym.sym == SDLK_ESCAPE) {
+                m_game->shutdown();
+            }
+        }
     }
 }
