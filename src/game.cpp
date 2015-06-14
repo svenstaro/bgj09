@@ -6,6 +6,8 @@
 Game::~Game() {
     SDL_DestroyRenderer(m_render);
     SDL_DestroyWindow(m_window);
+    Mix_Quit();
+    IMG_Quit();
     SDL_Quit();
 }
 
