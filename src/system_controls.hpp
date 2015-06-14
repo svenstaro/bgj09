@@ -6,6 +6,7 @@
 #include <glm/vec2.hpp>
 #include <glm/glm.hpp>
 #include <glm/vec3.hpp>
+#include <iostream>
 
 
 class ControlSystem : public entityx::System<ControlSystem>
@@ -19,29 +20,39 @@ public:
 
 		for(entityx::Entity entity : es.entities_with_components(moveable, position, controlable))
 		{
-			int x = 0;
-			int y = 0;
+			float x = 0.0f;
+			float y = 0.0f;
 
 			const Uint8 *state = SDL_GetKeyboardState(NULL);
 			if(state[SDL_SCANCODE_W])
 			{
-				y++;
+				y-=1.0f;
+				std::cout << " Y+" << std::endl;
 			}
 			if(state[SDL_SCANCODE_A])
 			{
-				x--;
+				x-=1.0f;
+				std::cout << "X-" << std::endl;
 			}
 			if(state[SDL_SCANCODE_S])
 			{
-				y--;
+				y+=1.0f;
+				std::cout << "Y-" << std::endl;
+
 			}
 			if(state[SDL_SCANCODE_D])
 			{
-				x++;
+				x+=1.0f;
+				std::cout << "X+" << std::endl;
+
 			}
-			glm::vec2 direction(x,y);
-			direction = glm::normalize(direction) *(float) dt;
-			events.emit<PlayerInstructionEvent>(direction,entity);
+			if(x != 0.0f || y != 0.0f)
+			{
+				glm::vec2 direction(x,y);
+				direction = glm::normalize(direction);// *(float) dt;
+				events.emit<PlayerInstructionEvent>(direction,entity);
+			}
+			
 		}
 	}
 };
