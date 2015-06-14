@@ -27,24 +27,18 @@ public:
 			if(state[SDL_SCANCODE_W])
 			{
 				y-=1.0f;
-				std::cout << " Y+" << std::endl;
 			}
 			if(state[SDL_SCANCODE_A])
 			{
 				x-=1.0f;
-				std::cout << "X-" << std::endl;
 			}
 			if(state[SDL_SCANCODE_S])
 			{
 				y+=1.0f;
-				std::cout << "Y-" << std::endl;
-
 			}
 			if(state[SDL_SCANCODE_D])
 			{
 				x+=1.0f;
-				std::cout << "X+" << std::endl;
-
 			}
 			if(state[SDL_SCANCODE_SPACE])
 			{
