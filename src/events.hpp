@@ -20,4 +20,9 @@ struct CollisionEvent {
 	entityx::Entity m_second;
 };
 
+struct PlayerInstructionLight {
+	PlayerInstructionLight(entityx::Entity entity) : m_entity(entity){}
+	entityx::Entity m_entity;
+};
+
 #endif

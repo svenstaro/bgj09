@@ -24,19 +24,32 @@ public:
 			float y = 0.0f;
 
 			const Uint8 *state = SDL_GetKeyboardState(NULL);
-
 			if(state[SDL_SCANCODE_W])
+			{
 				y-=1.0f;
-
+				std::cout << " Y+" << std::endl;
+			}
 			if(state[SDL_SCANCODE_A])
+			{
 				x-=1.0f;
-
+				std::cout << "X-" << std::endl;
+			}
 			if(state[SDL_SCANCODE_S])
+			{
 				y+=1.0f;
+				std::cout << "Y-" << std::endl;
 
+			}
 			if(state[SDL_SCANCODE_D])
+			{
 				x+=1.0f;
+				std::cout << "X+" << std::endl;
 
+			}
+			if(state[SDL_SCANCODE_SPACE])
+			{
+				events.emit<PlayerInstructionLight>(entity);
+			}
 			if(x != 0.0f || y != 0.0f)
 			{
 				glm::vec2 direction(x,y);

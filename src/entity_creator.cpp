@@ -22,8 +22,8 @@ void EntityCreator::create_angler(entityx::EntityManager &entity_manager) {
 	fish.assign<Controlable>();
 	fish.assign<Moveable>(glm::vec2(0.0,0.0),0.1);
 	fish.assign<Position>();
-	fish.assign<Drawable>("Player",50,50);
-	fish.assign<Light>(10);
+	fish.assign<Drawable>("Player",75,75);
+	fish.assign<Light>(10,5);
 }
 
 void EntityCreator::create_enemy(entityx::EntityManager &entity_manager) {

@@ -23,6 +23,11 @@ struct Moveable : entityx::Component<Moveable>
 		return m_velocity;
 	}
 
+	float get_acceleration()
+	{
+		return m_acceleration;
+	}
+
 private:
 	glm::vec2 m_velocity;
 	double m_acceleration;
