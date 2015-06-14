@@ -31,7 +31,7 @@ void EntityCreator::create_enemy(entityx::EntityManager &entity_manager) {
 	enemy.assign<Enemy>();
 	enemy.assign<Moveable>(glm::vec2{0.0,0.0},0.1);
 	enemy.assign<Position>(glm::vec2{100.f, 100.f}, 50, 50);
-	enemy.assign<Drawable>("Player",50,50);
+	enemy.assign<Drawable>("enemy",50,50);
 }
 
 void EntityCreator::create_level_1(entityx::EntityManager &entity_manager) {
