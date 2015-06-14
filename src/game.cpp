@@ -4,6 +4,7 @@
 #include "entity_creator.hpp"
 
 Game::~Game() {
+    SDL_CloseAudio();
     SDL_DestroyRenderer(m_render);
     SDL_DestroyWindow(m_window);
     Mix_Quit();
@@ -12,7 +13,7 @@ Game::~Game() {
 }
 
 int Game::init() {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return 1;
     }
@@ -32,6 +33,11 @@ int Game::init() {
         SDL_DestroyWindow(m_window);
         std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
+        return 1;
+    }
+
+    if (Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) != 0) {
+        std::cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
         return 1;
     }
 
