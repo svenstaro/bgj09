@@ -90,6 +90,7 @@ public:
 
 		entityx::ComponentHandle<Drawable> drawable;
 		entityx::ComponentHandle<Position> position;
+		entityx::ComponentHandle<Controlable> controlable;
 		for (entityx::Entity entity : es.entities_with_components(drawable, position))
 		{
 			(void)entity;
@@ -114,25 +115,26 @@ public:
         SDL_SetRenderDrawColor(m_game->get_renderer(), 255, 100, 200, 255);
         SDL_Rect rect{0, 0, 400, 400};
         SDL_RenderFillRect(m_game->get_renderer(), &rect);
+        for (entityx::Entity player : es.entities_with_components(controlable, position))
+ 		{ 
+ 			(void)player;
+	        //SDL_GetMouseState(&x, &y);
+	        m_camera.x = position->get_position()[0] - m_camera.w/2;
+	        m_camera.y = position->get_position()[1] - m_camera.h/2;
 
-        int x, y;
-        SDL_GetMouseState(&x, &y);
-        m_camera.x = x - m_camera.w/2;
-        m_camera.y = y - m_camera.h/2;
+	        if (m_camera.x < 0)
+	            m_camera.x = 0;
+	        else if (m_camera.x > m_game->get_worldsize().w - m_camera.w)
+	            m_camera.x = m_game->get_worldsize().w - m_camera.w;
 
-        if (m_camera.x < 0)
-            m_camera.x = 0;
-        else if (m_camera.x > m_game->get_worldsize().w - m_camera.w)
-            m_camera.x = m_game->get_worldsize().w - m_camera.w;
-
-        if (m_camera.y < 0)
-            m_camera.y = 0;
-        else if (m_camera.y > m_game->get_worldsize().h - m_camera.h)
-            m_camera.y = m_game->get_worldsize().h - m_camera.h;
+	        if (m_camera.y < 0)
+	            m_camera.y = 0;
+	        else if (m_camera.y > m_game->get_worldsize().h - m_camera.h)
+	            m_camera.y = m_game->get_worldsize().h - m_camera.h;
 
 
-        std::cout << m_camera.x << " " << m_camera.y << std::endl;
-        
+	        std::cout << m_camera.x << " " << m_camera.y << std::endl;
+        }
         SDL_SetRenderTarget(m_game->get_renderer(), nullptr);
         SDL_RenderCopy(m_game->get_renderer(), m_drawtex, &m_camera, nullptr);
         SDL_RenderPresent(m_game->get_renderer());
