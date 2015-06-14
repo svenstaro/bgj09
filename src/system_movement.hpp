@@ -5,7 +5,7 @@
 #include "game.hpp"
 #include "component_position.hpp"
 #include "component_moveable.hpp"
-#include "component_controlable.hpp"
+#include "component_player.hpp"
 
 #include "entityx/entityx.h"
 

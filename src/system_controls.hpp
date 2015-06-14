@@ -2,7 +2,7 @@
 #define SYSTEM_CONTROLS_HPP
 	
 #include "events.hpp"
-#include "component_controlable.hpp"
+#include "component_player.hpp"
 #include <glm/vec2.hpp>
 #include <glm/glm.hpp>
 #include <glm/vec3.hpp>
@@ -16,9 +16,9 @@ public:
 	{
 		entityx::ComponentHandle<Moveable> moveable;
 		entityx::ComponentHandle<Position> position;
-		entityx::ComponentHandle<Controlable> controlable;
+		entityx::ComponentHandle<Player> player;
 
-		for(entityx::Entity entity : es.entities_with_components(moveable, position, controlable))
+		for(entityx::Entity entity : es.entities_with_components(player))
 		{
 			float x = 0.0f;
 			float y = 0.0f;

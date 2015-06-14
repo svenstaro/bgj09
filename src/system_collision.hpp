@@ -18,7 +18,16 @@ public:
             for(entityx::Entity second_entity : es.entities_with_components(second_position)) {
                 if (first_entity != second_entity &&
                         SDL_HasIntersection(&first_position->get_rect(), &second_position->get_rect())) {
-                    events.emit<CollisionEvent>(first_entity, second_entity);
+                    // events.emit<CollisionEvent>(first_entity, second_entity);
+                        entityx::ComponentHandle<Player> player = entity.component<Player>();
+                        if(player)
+                        {
+                            player->set_lives(player->get_lives() - 1);
+                            if(player->get_lives() <= 0)
+                            {
+                                
+                            }
+                        }
                 }
             }
         }

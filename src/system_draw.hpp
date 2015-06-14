@@ -1,7 +1,7 @@
 #include "game.hpp"
 #include "component_drawable.hpp"
 #include "component_position.hpp"
-#include "component_controlable.hpp"
+#include "component_player.hpp"
 #include "component_light.hpp"
 #include "component_moveable.hpp"
 #include "strapon/resource_manager/resource_manager.hpp"
@@ -40,7 +40,7 @@ public:
 
         entityx::ComponentHandle<Drawable> drawable;
         entityx::ComponentHandle<Position> position;
-        entityx::ComponentHandle<Controlable> controlable;        
+        entityx::ComponentHandle<Player> player;        
 
         for (entityx::Entity entity : es.entities_with_components(drawable, position))
         {

@@ -42,12 +42,12 @@ int Game::init() {
         return 1;
     }
 
-    m_res_manager.load_texture("Player","res/character.png", m_render);
-    m_res_manager.load_texture("level_1_bg","res/underwater_mountains.png", m_render);
-    m_res_manager.load_texture("gradient","res/gradient.png", m_render);
-    m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
-    m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
-    m_res_manager.load_music("music1","res/ova.ogg");
+    m_res_manager.load_texture("Player", "res/character.png", m_render);
+    m_res_manager.load_texture("level_1_bg", "res/underwater_mountains.png", m_render);
+    m_res_manager.load_texture("gradient", "res/gradient.png", m_render);
+    m_res_manager.load_texture("enemy", "res/jellyfish-md.png", m_render);
+    m_res_manager.load_texture("enemy", "res/jellyfish-md.png", m_render);
+    m_res_manager.load_music("music1", "res/ova.ogg");
 
     SDL_RenderSetLogicalSize(m_render, width, height);
 
