@@ -28,6 +28,8 @@ public:
     void mainloop();
     bool is_running();
     void shutdown();
+    void gameover();
+    void popstate();
 
     SDL_Renderer *get_renderer();
 	ResourceManager &get_res_manager();
@@ -44,8 +46,6 @@ private:
     std::stack<std::pair<std::string, std::unique_ptr<State>>> m_states;
     entityx::EntityX m_ex;
     ResourceManager m_res_manager;
-
-
 };
 
 #endif /* end of include guard: GAME_HPP */
