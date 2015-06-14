@@ -3,6 +3,8 @@
 #include "system_draw.hpp"
 #include "system_controls.hpp"
 #include "entityx/entityx.h"
+
+
 #include <SDL2/SDL.h>
 
 MainState::MainState(Game *game) : m_game(game) {}
@@ -15,7 +17,10 @@ int MainState::init() {
     m_systems.add<ControlSystem>();
     m_systems.configure();
 
+    EntityCreator::create_level_1(m_entities);
     EntityCreator::create_angler(m_entities);
+    
+
 
     return 0;
 }

@@ -9,9 +9,17 @@
 
 void EntityCreator::create_angler(entityx::EntityManager &entity_manager)
 {
-	entityx::Entity entity = entity_manager.create();
-	entity.assign<Controlable>();
-	entity.assign<Moveable>(glm::vec2(0.0,0.0),0.1);
-	entity.assign<Position>();
-	entity.assign<Drawable>("Player",50,50);
+	entityx::Entity fish = entity_manager.create();
+	fish.assign<Controlable>();
+	fish.assign<Moveable>(glm::vec2(0.0,0.0),0.1);
+	fish.assign<Position>();
+	fish.assign<Drawable>("Player",50,50);
+	fiss.assign<Light>(10);
+}
+
+void EntityCreator::create_level_1(entityx::EntityManager &entity_manager)
+{
+	entityx::Entity background = entity_manager.create();
+	background.assign<Position>();
+	background.assign<Drawable>("level_1_bg",1600,1200);
 }
