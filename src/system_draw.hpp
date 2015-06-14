@@ -53,11 +53,7 @@ public:
 						   &dest);
     	}
 
-        SDL_SetRenderDrawColor(m_game->get_renderer(), 255, 100, 200, 255);
-        SDL_Rect rect{0, 0, 400, 400};
-        SDL_RenderFillRect(m_game->get_renderer(), &rect);
-        for (entityx::Entity player : es.entities_with_components(controlable, position))
- 		{ 
+        for (entityx::Entity player : es.entities_with_components(controlable, position)) { 
  			(void)player;
 	        //SDL_GetMouseState(&x, &y);
 	        m_camera.x = position->get_position()[0] - m_camera.w/2;
