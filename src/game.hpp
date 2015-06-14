@@ -32,6 +32,7 @@ public:
     void popstate();
     int get_score();
     void set_score(int score);
+    std::stack<std::pair<std::string, std::unique_ptr<State>>> &get_states();
     const std::string &statename() const;
 
     SDL_Renderer *get_renderer();

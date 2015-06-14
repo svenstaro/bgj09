@@ -1,4 +1,5 @@
 #include "gameover_state.hpp"
+#include "main_state.hpp"
 
 #include "strapon/resource_manager/resource_manager.hpp"
 
@@ -15,8 +16,11 @@ void GameoverState::update(double dt) {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_KEYDOWN) {
-            if(e.key.keysym.sym == SDLK_SPACE) {
-                m_game->popstate();
+            if(e.key.keysym.sym == SDLK_SPACE){
+                //m_game->popstate();
+                //m_game->popstate();
+                //m_game->get_states().push({"main", std::make_unique<MainState>(m_game)});
+                //m_game->get_states().top().second->init();
             }
         }
         if (e.type == SDL_QUIT) {

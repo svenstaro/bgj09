@@ -88,6 +88,10 @@ ResourceManager &Game::get_res_manager() {
     return m_res_manager;
 }
 
+std::stack<std::pair<std::string, std::unique_ptr<State>>> &Game::get_states() {
+    return m_states;
+}
+
 bool Game::is_running() {
     return m_running;
 }

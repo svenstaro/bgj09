@@ -31,11 +31,12 @@ public:
                     else if(second_entity.has_component<Player>())
                         player = second_entity.component<Player>();
 
+                    if (player.valid()) {
                     player->set_lives(player->get_lives() - 1);
                     if(player->get_lives() <= 0)
                     {
                         m_game->gameover();
-                    }
+                    }}
 
                         //if(enemy)
                 }

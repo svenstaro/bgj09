@@ -7,7 +7,7 @@
 #include "component_enemy.hpp"
 #include "component_light.hpp"
 #include <glm/vec2.hpp>
-
+#include <random>
 
 // void EntityCreator::create_obstacle(entityx::EntityManager &entity_manager) {
 // 	entityx::Entity entity = entity_manager.create();
@@ -21,7 +21,7 @@ void EntityCreator::create_angler(entityx::EntityManager &entity_manager) {
 	entityx::Entity fish = entity_manager.create();
 	fish.assign<Player>(2, 100);
 	fish.assign<Moveable>(glm::vec2(0.0,0.0),0.1);
-	fish.assign<Position>(glm::vec2(100.f,100.f));
+	fish.assign<Position>(glm::vec2(500.f,600.f));
 	fish.assign<Drawable>("Player",75,75);
 	fish.assign<Light>(10,5);
 }
@@ -30,7 +30,14 @@ void EntityCreator::create_enemy(entityx::EntityManager &entity_manager) {
 	entityx::Entity enemy = entity_manager.create();
 	enemy.assign<Enemy>();
 	enemy.assign<Moveable>(glm::vec2{0.0,0.0},0.1);
-	enemy.assign<Position>(glm::vec2{500.f, 500.f}, 50, 50);
+
+	std::random_device random_device;
+	std::mt19937 random_engine{random_device()};
+	std::uniform_int_distribution<int> die_distribution{1, 6};
+	
+	int die_roll = die_distribution(random_engine);
+
+	enemy.assign<Position>(glm::vec2{20.f, 100.f * die_roll}, 50, 50);
 	enemy.assign<Drawable>("enemy",50,50);
 }
 
