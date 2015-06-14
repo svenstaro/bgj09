@@ -98,13 +98,13 @@ public:
 			SDL_Rect dest;
 
 			dest.x = position->get_position()[0];
-			std::cout << position->get_position()[0] << std::endl;
 			dest.y = position->get_position()[1];
-			std::cout << position->get_position()[1] << std::endl;
 			dest.w = drawable->get_width();
-			std::cout << drawable->get_width() << std::endl;
 			dest.h = drawable->get_height();
-			std::cout << drawable->get_height() << std::endl;
+			// std::cout << position->get_position()[0] << std::endl;
+			// std::cout << position->get_position()[1] << std::endl;
+			// std::cout << drawable->get_width() << std::endl;
+			// std::cout << drawable->get_height() << std::endl;
 
 			SDL_RenderCopy(m_game->get_renderer(),
 						   m_game->get_res_manager().get_texture(drawable->get_texture_key()),
