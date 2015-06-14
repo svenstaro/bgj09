@@ -3,8 +3,6 @@
 
 #include "entityx/entityx.h"
 
-struct Collision : entity::Component<Collision>
-{
-	
-};
+struct Collision : entityx::Component<Collision>
+{};
 #endif
