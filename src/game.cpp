@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 #include "main_state.hpp"
+#include "gameover_state.hpp"
 #include "entity_creator.hpp"
 
 Game::~Game() {
@@ -87,6 +88,14 @@ bool Game::is_running() {
 
 void Game::shutdown() {
     m_running = false;
+}
+
+void Game::gameover() {
+    m_states.push({"gameover", std::make_unique<GameoverState>(this)});
+}
+
+void Game::popstate() {
+    m_states.pop();
 }
 
 const SDL_Rect &Game::get_worldsize() const {

@@ -1,5 +1,5 @@
-#ifndef STATE_MAIN_HPP
-#define STATE_MAIN_HPP
+#ifndef MAIN_STATE_MAIN_HPP
+#define MAIN_STATE_MAIN_HPP
 
 #include "game.hpp"
 #include "entityx/entityx.h"
