@@ -6,6 +6,7 @@
 
 Game::~Game() {
     m_res_manager.shutdown();
+    TTF_Quit();
     SDL_CloseAudio();
     SDL_DestroyRenderer(m_render);
     SDL_DestroyWindow(m_window);
@@ -38,8 +39,13 @@ int Game::init() {
         return 1;
     }
 
-    if (Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) != 0) {
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
         std::cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
+        return 1;
+    }
+
+    if (TTF_Init() != 0) {
+        std::cout << "SDL_ttf could not initialize! SDL_ttf Error: " << TTF_GetError() << std::endl;
         return 1;
     }
 
@@ -49,6 +55,7 @@ int Game::init() {
     m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
     m_res_manager.load_texture("enemy","res/jellyfish-md.png", m_render);
     m_res_manager.load_music("music1","res/ova.ogg");
+    m_res_manager.load_font("font20","res/awfulfont.ttf", 20);
 
     SDL_RenderSetLogicalSize(m_render, width, height);
 
@@ -96,6 +103,10 @@ void Game::gameover() {
 
 void Game::popstate() {
     m_states.pop();
+}
+
+const std::string &Game::statename() const {
+    return m_states.top().first;
 }
 
 const SDL_Rect &Game::get_worldsize() const {

@@ -30,6 +30,7 @@ public:
     void shutdown();
     void gameover();
     void popstate();
+    const std::string &statename() const;
 
     SDL_Renderer *get_renderer();
 	ResourceManager &get_res_manager();
