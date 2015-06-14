@@ -80,7 +80,6 @@ public:
         SDL_RenderPresent(m_game->get_renderer());
     }
 
->>>>>>> 497d319db7cdfdfce4545c3440855298c69dec7c
 private:
     Game *m_game;
     SDL_Rect m_camera;
