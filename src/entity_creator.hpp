@@ -7,6 +7,7 @@ class EntityCreator
 {
 public:
 	static void create_angler(entityx::EntityManager &entity_manager);
+	static void create_obstacle(entityx::EntityManager &entity_manager);
 };
 
 #endif

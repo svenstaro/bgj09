@@ -7,11 +7,18 @@
 #include <glm/vec2.hpp>
 
 
-void EntityCreator::create_angler(entityx::EntityManager &entity_manager)
-{
+void EntityCreator::create_angler(entityx::EntityManager &entity_manager) {
 	entityx::Entity entity = entity_manager.create();
 	entity.assign<Controlable>();
-	entity.assign<Moveable>(glm::vec2(0.0,0.0),0.1);
+	entity.assign<Moveable>(glm::vec2(0.0, 0.0), 0.1);
 	entity.assign<Position>();
-	entity.assign<Drawable>("Player",50,50);
+	entity.assign<Drawable>("Player", 50, 50);
+}
+
+void EntityCreator::create_obstacle(entityx::EntityManager &entity_manager) {
+	entityx::Entity entity = entity_manager.create();
+	entity.assign<Controlable>();
+	entity.assign<Moveable>(glm::vec2(0.0, 0.0), 0.1);
+	entity.assign<Position>();
+	entity.assign<Drawable>("Obstacle", 50, 50);
 }
